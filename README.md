@@ -35,6 +35,11 @@ Todo
 ======
 - Add to package control
 
+Authors
+=======
+
+Borislav Peev (borislav.asdf at gmail dot com)
+
 License
 =======
 You are free to use the plugin at your own risk. The author takes no responsibility for what you do or not do with it.
