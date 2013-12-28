@@ -87,13 +87,12 @@ def update_view_status ( view ):
 
 def kill_scheme_editor ():
 	global _schemeEditor, _skipOne, _wasSingleLayout, _lastScope, _lastScopeIndex
-	# this crashes ST2 if placed here
-	# if _wasSingleLayout != None:
-	# 	_wasSingleLayout.set_layout( {
-	# 		'cols': [0.0, 1.0],
-	# 		'rows': [0.0, 1.0],
-	# 		'cells': [[0, 0, 1, 1]]
-	# 	} )
+	if int( sublime.version() ) > 3000 and _wasSingleLayout != None:
+		_wasSingleLayout.set_layout( {
+			'cols': [0.0, 1.0],
+			'rows': [0.0, 1.0],
+			'cells': [[0, 0, 1, 1]]
+		} )
 	_skipOne = 0
 	_wasSingleLayout = None
 	_schemeEditor = None
