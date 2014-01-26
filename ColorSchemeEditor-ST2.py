@@ -12,8 +12,8 @@ def find_matches ( scope, founds ):
 
 	ret = []
 	maxscore = 0
-
 	# find the scope in the xml that matches the most
+
 	for found in founds:
 		foundstr = _schemeEditor.substr( found )
 		pos = foundstr.find( '<string>' ) + 8
@@ -54,28 +54,29 @@ def update_view_status ( view ):
 	_lastScopeIndex = 0
 	
 	# find the scope under the cursor
-	scope_name = view.scope_name( view.sel()[0].a ).strip( ' ' ).replace( ' ', ' > ' )
-	scopes = reversed( scope_name.split( ' > ' ) )
+	scope_name = view.scope_name( view.sel()[0].a )
+	pretty_scope = scope_name.strip( ' ' ).replace( ' ', ' > ' )
+	scopes = reversed( pretty_scope.split( ' > ' ) )
 	
 	# convert to regex and look for the scope in the scheme editor
 	for scope in scopes:
 		if len( scope ) == 0:
 			continue
 		dots = scope.count( '.' )
-		regex = '<key>scope</key>\\s*<string>([a-z\.]* ?, ?)*('
+		regex = '<key>scope</key>\\s*<string>([a-z\\.]* ?, ?)*([a-z\\. ]*'
 		regex += scope.replace( '.', '(\\.' )
 		while dots > 0:
 			regex += ')?'
 			dots -= 1
-		regex += ')( ?, ?[a-z\.]*)*</string>'
-		
+		regex += ')( ?, ?[a-z\\.]*)*</string>'
+
 		found = _schemeEditor.find_all( regex, 0 )
-		found = find_matches( scope, found )
+		found = find_matches( scope_name, found )
 		if found != None:
 			_lastScope += found
 
 	scopes = len( _lastScope )
-	sublime.status_message( str( scopes ) +  ' matches: ' + scope_name )
+	sublime.status_message( 'matches ' + str( scopes ) + ': ' + pretty_scope )
 	if scopes == 0:
 		_lastScope = None
 		display_scope( sublime.Region( 0, 0 ) )
