@@ -1,5 +1,5 @@
-ColorSchemeEditor-ST2
-=====================
+ColorSchemeEditor
+=================
 "Real-time" color scheme editor plugin for Sublime Text 2/3.
 
 Screenshots
