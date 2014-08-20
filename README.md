@@ -15,7 +15,7 @@ Screenshots
 
 Usage
 =====
-- Activate the color scheme you want to edit (**it must be editable file on your disk, not file inside `.sublime-package`, aka `.zip`. You can unzip it, put it in your packages folder somewhere, e.g. `Packages/SomeWhere`, select the theme and then you can use this plugin.**).
+- Activate the color scheme you want to edit (**it must be editable file on your disk, not file inside `.sublime-package`, aka `.zip`. You can unzip it, put it in your packages folder somewhere, e.g. `Packages/SomeWhere`, select the theme and then you can use this plugin**).
 - Open some file and press Shift+F12.
 - Your color scheme should open in separate pane.
 - As you put the cursor on different source elements, the other pane will find and display the XML element that is affecting this element.
